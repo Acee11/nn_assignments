@@ -3,14 +3,13 @@ Routines for numerical gradient evaluation.
 """
 
 import numpy as np
-from past.builtins import xrange # pip3 install future
 
 def numerical_gradient(f, X, delta=1e-4):
     X = np.array(X) # force a copy
     R = np.zeros_like(X)
     XF = X.ravel() #get the views
     RF = R.ravel() 
-    for i in xrange(XF.shape[0]):
+    for i in range(XF.shape[0]):
         xold = XF[i]
         XF[i] = xold+delta
         fp, unused_grad = f(X)
